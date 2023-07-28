@@ -14,36 +14,3 @@ As I explore the realms of IT and coding, I have come to appreciate the richness
 In this repository, I will be documenting my daily progress with LeetCode, including the problems I work on, the approaches I take, and the lessons I learn along the way. I hope that by doing so, I can inspire others to embark on their coding journeys and also receive valuable feedback from the community to improve my problem-solving skills.
 
 
-## Date: 26th July 2023
-
-### LeetCode Problem: 977
-
-```java
-class Solution {
-    public int[] sortedSquares(int[] nums) {
-        int[] result = new int[nums.length];
-        int left = 0, right = nums.length - 1;
-        int index = nums.length - 1;
-        
-        while (left <= right) {
-            if (nums[left] * nums[left] > nums[right] * nums[right]) {
-                result[index--] = nums[left] * nums[left];
-                left++;
-            } else {
-                result[index--] = nums[right] * nums[right];
-                right--;
-            }
-        }
-        
-        return result;
-    }
-}
-
-## Reflection:
-
-Today, I solved the LeetCode problem 977. At first, I wrote almost all the steps of the solution, except for the while loop with the condition `left <= right`. I was not entirely clear about its purpose. However, after some research, I finally understood why we need it. The while loop ensures that we correctly handle all the elements in the array, including both positive and negative values, and place their squared values in the result array in non-decreasing order.
-简而言之,当left <= right 的时候这个循环继续.
-
-As for why we cannot use `Math.pow` to calculate the squares, I found the answer during my investigation. The reason is that using `Math.pow` with floating-point arithmetic might introduce rounding errors and impact the accuracy of the results. In this case, since we are dealing with integers, directly multiplying the numbers is more efficient and avoids any inaccuracies.
-
-Overall, today's coding experience has been enlightening, and I feel more confident in my problem-solving skills. I look forward to the next challenge and the opportunity to learn and grow further in my coding journey.
