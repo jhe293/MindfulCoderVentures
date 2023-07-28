@@ -1,0 +1,27 @@
+## Date: 28th July 2023
+
+### LeetCode Problem: 704. Binary Search
+
+```java
+class Solution {
+    public int search(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] > target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return -1;
+    }
+}
+
+Reflection:
+This was the smoothest and simplest exercise I've done recently.
+The concept of using two pointers (left and right) in binary search is quite enjoyable.
+It's essential to pay attention to the relationship between the intervals (left and right) to ensure correctness.
+Overall, solving this problem enhanced my understanding of binary search, and I'm eager to tackle more challenging exercises in the future. The feeling of progress is motivating! 🚀🎯
