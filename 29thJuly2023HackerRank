@@ -35,3 +35,62 @@ By setting result to Integer.MAX_VALUE initially and using Math.min(subLength, r
 For finding the maximum value:
 
 By setting maxValue to Integer.MIN_VALUE initially and using Math.max(num, maxValue), I can ensure that maxValue will always hold the true maximum value. Any subsequent comparison will always replace maxValue with the larger value, ensuring the correct maximum is obtained.
+
+
+
+## Problem Description:
+
+Given a time in 12-hour AM/PM format, convert it to military (24-hour) time.
+
+- 12:00:00AM on a 12-hour clock is 00:00:00 on a 24-hour clock.
+- 12:00:00PM on a 12-hour clock is 12:00:00 on a 24-hour clock.
+
+```java
+class Result {
+    public static String timeConversion(String s) {
+        String hour = s.substring(0, 2);
+        String minAndSec = s.substring(2, 8);
+        String day = s.substring(8);
+
+        if (day.equals("AM") && Integer.parseInt(hour) == 12) {
+            return "00" + minAndSec;
+        } else if (day.equals("PM")) {
+            int hourInt = Integer.parseInt(hour);
+            if (hourInt != 12) {
+                hourInt += 12;
+            }
+            return hourInt + minAndSec;
+        } else {
+            return hour + minAndSec;
+        }
+    }
+}
+
+Reflection:
+The timeConversion method effectively converts a time from 12-hour AM/PM format to military (24-hour) time format. Here are the key points I learned from solving this problem:
+
+I used string manipulation to extract the hour, minutes, seconds, and AM/PM part from the input string.
+When the input is in AM and the hour is 12, I set it to 00 in the military format.
+When the input is in PM, I add 12 to the hour (except when it's 12 PM), as per the conversion rule.
+
+AND I LEARNT:
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+class Result {
+    public static String timeConversion(String s) {
+        try {
+            SimpleDateFormat inputFormat = new SimpleDateFormat("hh:mm:ssa");
+            SimpleDateFormat outputFormat = new SimpleDateFormat("HH:mm:ss");
+            Date date = inputFormat.parse(s);
+            return outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+}
+
+
