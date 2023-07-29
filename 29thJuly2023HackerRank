@@ -1,0 +1,37 @@
+## Problem Description:
+
+Given five positive integers, find the minimum and maximum values that can be calculated by summing exactly four of the five integers. Then print the respective minimum and maximum values as a single line of two space-separated long integers.
+
+```java
+import java.util.List;
+
+class Result {
+
+    public static void miniMaxSum(List<Integer> arr) {
+        long sum = 0;
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+
+        for (int num : arr) {
+            sum += num;
+            min = Math.min(min, num);
+            max = Math.max(max, num);
+        }
+
+        long minSum = sum - max;
+        long maxSum = sum - min;
+
+        System.out.println(minSum + " " + maxSum);
+    }
+}
+
+
+Feedback and Learning:
+During my recent coding experiences, I learned an efficient technique to find the minimum and maximum values in Java. By setting the initial minimum value to Integer.MAX_VALUE and the initial maximum value to Integer.MIN_VALUE, I ensured that any comparison made would always give the correct result.
+
+For finding the minimum value:
+
+By setting result to Integer.MAX_VALUE initially and using Math.min(subLength, result), I can guarantee that result will hold the true minimum value. Any subsequent comparison will always replace result with the smaller value, ensuring the correct minimum is achieved.
+For finding the maximum value:
+
+By setting maxValue to Integer.MIN_VALUE initially and using Math.max(num, maxValue), I can ensure that maxValue will always hold the true maximum value. Any subsequent comparison will always replace maxValue with the larger value, ensuring the correct maximum is obtained.
