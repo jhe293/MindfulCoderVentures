@@ -1,0 +1,30 @@
+## Daily Log: 30th July 2023
+
+### LeetCode Problem: 209. Minimum Size Subarray Sum
+
+```java
+class Solution {
+    public int minSubArrayLen(int target, int[] nums) {
+        int i = 0, sum = 0;
+        int result = Integer.MAX_VALUE;
+        for (int j = 0; j < nums.length; j++) {
+            sum += nums[j];
+            while (sum >= target) {
+                int subLength = j - i + 1;
+                result = Math.min(subLength, result);
+                sum -= nums[i++];
+            }
+        }
+        if (result == Integer.MAX_VALUE) {
+            return 0;
+        } else {
+            return result;
+        }
+    }
+}
+
+Reflection:
+I learned about Integer.MAX_VALUE, which represents the maximum value an integer can hold.
+The variable j denotes the end position of the new subarray. By moving j, we can first determine if the subarray sum exceeds the target. If it does, we then move i to obtain a new subarray and check if it still satisfies the sum greater than the target. The sum value also changes based on the movement of i.
+Incrementing i with i++ is essential to slide the window of the subarray efficiently.
+If result is assigned Integer.MAX_VALUE, it indicates that no subarray satisfies the condition. Otherwise, if result is assigned a value of subLength, it represents the minimum subarray length that meets the target sum.
