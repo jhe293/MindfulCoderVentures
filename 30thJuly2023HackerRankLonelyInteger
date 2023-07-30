@@ -1,0 +1,68 @@
+## Daily Log: 30th July 2023
+
+### Problem Description:
+
+You are given an array of integers, where all elements appear exactly twice except for one integer that appears only once. Your task is to find and return that lonely integer.
+
+```java
+import java.util.HashSet;
+import java.util.List;
+
+class Result {
+
+    public static int lonelyinteger(List<Integer> a) {
+        HashSet<Integer> moreThanOnce = new HashSet<>();
+        HashSet<Integer> onlyOnce = new HashSet<>();
+
+        for (Integer num : a) {
+            if (!moreThanOnce.contains(num)) {
+                if (onlyOnce.contains(num)) {
+                    onlyOnce.remove(num);
+                    moreThanOnce.add(num);
+                } else {
+                    onlyOnce.add(num);
+                }
+            }
+        }
+        return onlyOnce.iterator().next();
+    }
+}
+
+Reflection:
+The lonelyinteger method efficiently finds the integer that appears only once in the given array. Here are the key points I learned from solving this problem:
+
+The method uses two HashSet collections to keep track of elements that appear more than once (moreThanOnce) and elements that appear only once (onlyOnce).
+The loop iterates through the array, and for each element:
+If the element is not in moreThanOnce, it means it appears only once or is a new element. We check if it is in onlyOnce.
+If it is in onlyOnce, we remove it from onlyOnce and add it to moreThanOnce.
+If it is not in onlyOnce, we add it to onlyOnce.
+After processing all elements, the method returns the lonely integer from the onlyOnce set.
+
+
+Solution 2: 
+class Result {
+
+    public static int lonelyinteger(List<Integer> a) {
+        // Create a HashMap to store the count of each integer
+        Map<Integer, Integer> countMap = new HashMap<>();
+
+        // Count the occurrences of each integer in the list
+        for (int num : a) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+
+        // Find the integer with count equal to 1 (the lonely integer)
+        for (int num : a) {
+            if (countMap.get(num) == 1) {
+                return num;
+            }
+        }
+
+        throw new IllegalArgumentException("No lonely integer found.");
+    }
+}
+
+
+
+
+Solution 2 uses a HashMap to count the occurrences of each integer in the list. It then iterates through the array again to find the integer with a count equal to 1 (the lonely integer). This approach is more generalized and can handle scenarios where there are multiple lonely integers or repeated integers.
