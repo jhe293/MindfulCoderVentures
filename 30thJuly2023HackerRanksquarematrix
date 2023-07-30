@@ -1,0 +1,27 @@
+## Daily Log: 30th July 2023
+
+### Problem Description:
+
+Given a square matrix, you need to calculate the absolute difference between the sums of its diagonals.
+
+```java
+class Result {
+
+    public static int diagonalDifference(List<List<Integer>> arr) {
+        int diagonalLeft = 0, diagonalRight = 0, n = arr.size();
+        for (int i = 0; i < n ; i++) {
+            diagonalLeft += arr.get(i).get(i);
+            diagonalRight += arr.get(i).get(n - i - 1);
+        }
+        return Math.abs(diagonalLeft - diagonalRight);
+    }
+}
+
+Reflection:
+The diagonalDifference function efficiently calculates the absolute difference between the sums of the left-to-right and right-to-left diagonals of the given square matrix. Here are my insights from solving this problem:
+
+The function uses two variables diagonalLeft and diagonalRight to keep track of the sum of elements along the left-to-right diagonal and the right-to-left diagonal, respectively.
+The loop iterates through the rows of the square matrix, and for each row:
+The element at the left-to-right diagonal has the position arr[i][i].
+The element at the right-to-left diagonal has the position arr[i][n - i - 1], where n is the size of the matrix.
+The function calculates the absolute difference between the two sums using Math.abs(diagonalLeft - diagonalRight) and returns the result.
