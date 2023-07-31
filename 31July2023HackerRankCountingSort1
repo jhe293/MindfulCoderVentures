@@ -1,0 +1,67 @@
+## Daily Log: 31st July 2023
+
+I did an online assessment last night. I was stacked with the programming question so I had no time to do the SQL question, it raised my attention for SQL.
+
+From now on, I will also do practise for SQL
+
+### Challenge Description:
+
+Challenge
+Given a list of integers, count and return the number of times each value appears as an array of integers.
+
+Function Description
+
+Complete the countingSort function in the editor below.
+
+countingSort has the following parameter(s):
+
+arr[n]: an array of integers
+Returns
+
+int[100]: a frequency array
+### Function Description:
+
+```java
+class Result {
+
+    public static List<Integer> countingSort(List<Integer> arr) {
+        int[] freq = new int[100];
+        for (int i = 0; i < arr.size(); i++) {
+            freq[arr.get(i)]++;
+        }
+
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < freq.length; i++) {
+            result.add(freq[i]);
+        }
+
+        return result;
+    }
+}
+
+To tackle this problem, I created an array freq of size 100 to store the frequency of each element.
+Utilizing a for loop, I iterated through the input list arr, and for each element, I incremented the corresponding frequency count in the freq array.
+After that, I created a new list result and populated it with the frequency values from the freq array.
+The final result is the list containing the frequency of each element in the original list.
+
+I've always wanted to try using HashMap as I felt it would be more efficient, but I have consistently failed to do so. I wonder if anyone has managed to solve it using HashMap?
+
+Just now, I went to look for other people's submissions and found the issue. It turns out that if a number does not appear in the given 'arr' list, I need to count it as 0. I had not accounted for this scenario in my previous implementation.
+
+So the HashMap solution is
+```java
+public static List<Integer> countingSort(List<Integer> arr) {
+    // Write your code here
+    HashMap<Integer, Integer> hsMap = new HashMap<>();
+    for (Integer num : arr) {
+        hsMap.put(num, hsMap.getOrDefault(num, 0) + 1);
+    }
+
+    List<Integer> result = new ArrayList<>();
+    for (int i = 0; i < 100; i++) {
+        result.add(hsMap.getOrDefault(i, 0));
+    }
+    return result;
+}
+
+
