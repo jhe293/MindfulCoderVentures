@@ -1,0 +1,26 @@
+## Daily Log: 1st August 2023
+
+### Finding the Median
+
+Collections.sort(arr);
+
+int n = arr.size();
+
+if (n % 2 == 1) {
+    return arr.get(n / 2);
+} else {
+    int mid1 = arr.get(n / 2 - 1);
+    int mid2 = arr.get(n / 2);
+    return (mid1 + mid2) / 2;
+}
+
+
+Today, I tackled the task of finding the median from a list of integers. The algorithm to find the median involves the following steps:
+
+1. Sorting the list of integers in ascending order using `Collections.sort(arr)`.
+2. Calculating the size of the list `n` using `int n = arr.size()`.
+3. Checking if the size of the list is odd or even using `if (n % 2 == 1)`.
+   - If the size is odd, the median is simply the middle element, which can be obtained using `arr.get(n/2)`.
+   - If the size is even, we need to find the average of the two middle elements to get the median. We retrieve the two middle elements using `int mid1 = arr.get(n/2 - 1)` and `int mid2 = arr.get(n/2)`, and then calculate the median as `(mid1 + mid2) / 2`.
+
+
