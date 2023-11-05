@@ -1,0 +1,91 @@
+## Code Deployment to AWS EC2 Instance and Personal Reflection
+
+### Implementation Process:
+
+1. **GitHub Repository Setup:**
+   - Create a GitHub repository to store your code. GitHub serves as a secure and collaborative platform for code management.
+
+2. **AWS EC2 Instance Configuration:**
+   - Launch an AWS EC2 instance, which becomes your digital workspace for application deployment.
+
+3. **Software Package Installation:**
+   - Install essential software packages for a seamless workflow:
+     - Node.js: `sudo yum update -y && sudo yum install -y nodejs`
+     - Git: `sudo yum install git -y`
+     - PM2: `sudo npm install -g pm2`
+
+4. **Cloning Code with Access Token:**
+   - Clone your code from GitHub to your EC2 instance using a personal access token. This ensures code repository security.
+     - Command: `git clone https://<YourToken>@github.com/jhe293/personal-blog-website.git`
+
+5. **Node.js and SQLite Interaction:**
+   - Interact with Node.js and SQLite, vital for your application. Install SQLite as per your data package requirements:
+     - SQLite Installation: `sudo yum install sqlite`
+     - Execute SQLite Scripts: `sqlite3 project-database.db < sql/<ActualFileName>`
+
+6. **Application Deployment:**
+   - Restart your Node.js application using PM2, ensuring it doesn't block:
+     - Start Application: `sudo pm2 start app.js`
+     - Verify Application Status: `sudo pm2 ls`
+
+7. **Dealing with Port 80 Restrictions:**
+   - If your application runs on port 80 and you face permission issues, run your application with `sudo`:
+     - `sudo npm start`
+
+8. **Continuous Learning:**
+   - Embrace the idea that development is an ongoing learning journey. Each deployment presents opportunities to explore and expand your knowledge.
+
+### Personal Reflection:
+
+- Today's journey of code deployment to an AWS EC2 instance reinforced the importance of version control using GitHub. It's not just a code repository; it's a safeguard for your work.
+- Setting up the EC2 instance was akin to crafting my own digital playground, a space where my applications could come to life.
+- The installation of software packages like Node.js, Git, and PM2 proved crucial for a smooth workflow, ensuring efficient code execution and version control.
+- Cloning code with a personal access token emphasized the significance of securing code repositories, protecting intellectual property.
+- Exploring Node.js and SQLite interactions added an exciting dimension to my experience. Understanding SQLite installation and script execution was pivotal for database operations.
+- The discovery of PM2 as an application management tool, preventing application blocking, was a valuable addition to my toolkit.
+- Overcoming the challenge of restricted port 80 deepened my understanding of server management permissions.
+- Above all, this journey reminded me that development is a constant learning process, where each deployment is an opportunity for exploration and growth.
+
+## 代码部署到AWS EC2实例和个人感悟
+
+### 实施过程：
+
+1. **GitHub存储库设置：**
+   - 创建一个GitHub存储库以存储您的代码。GitHub是一个安全且协作的平台，用于代码管理。
+
+2. **AWS EC2实例配置：**
+   - 启动AWS EC2实例，这将成为您的数字工作空间，用于应用程序部署。
+
+3. **软件包安装：**
+   - 安装必要的软件包，以确保流畅的工作流程：
+     - Node.js：`sudo yum update -y && sudo yum install -y nodejs`
+     - Git：`sudo yum install git -y`
+     - PM2：`sudo npm install -g pm2`
+
+4. **使用访问令牌克隆代码：**
+   - 使用个人访问令牌将代码从GitHub克隆到EC2实例，以确保代码存储库的安全性。
+     - 命令：`git clone https://<YourToken>@github.com/jhe293/personal-blog-website.git`
+
+5. **Node.js和SQLite互动：**
+   - 与Node.js和SQLite互动对于您的应用程序至关重要。根据数据包需求安装SQLite：
+     - 安装SQLite：`sudo yum install sqlite`
+     - 执行SQLite脚本：`sqlite3 project-database.db < sql/<ActualFileName>`
+
+6. **应用程序部署：**
+   - 使用PM2重新启动Node.js应用程序，确保它不会阻塞：
+     - 启动应用程序：`sudo pm2 start app.js`
+     - 验证应用程序状态：`sudo pm2 ls`
+
+7. **解决80端口限制：**
+   - 如果您的应用程序在端口80上运行且遇到权限问题，使用`sudo`运行应用程序：
+     - `sudo npm start`
+
+8. **持续学习：**
+   - 今天的代码部署之旅强化了使用GitHub进行版本控制的重要性。它不仅仅是一个代码存储库；它还是您工作的保障。
+   - 设置EC2实例就像是在创建自己的数字游乐场，一个应用程序可以在其中得以实现的空间。
+   - 安装软件包，如Node.js、Git和PM2，对于确保流畅的工作流程至关重要，确保了高效的代码执行和版本控制。
+   - 使用个人访问令牌克隆代码强调了保护代码存储库和知识产权的重要性。
+   - 探索Node.js和SQLite互动为我的经验增添了令人兴奋的维度。理解SQLite的安装和脚本执行对于数据库操作至关重要。
+   - 发现PM2作为应用程序管理工具，可以防止应用程序阻塞，是我的工具包中有价值的补充。
+   - 克服受限制的80端口的挑战加深了我对服务器管理权限的理解。
+   - 最重要的是，这次经历提醒我，开发是一个不断学习的过程，每次部署都是探索和成长的机会。
