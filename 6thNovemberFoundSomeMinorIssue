@@ -1,0 +1,7 @@
+## Reflection on AWS Console and Running Code
+
+**Reflection 1:**
+I noticed that my code stopped running when I closed the AWS console, preventing it from continuing its automated execution. To address this issue, I first experimented with PM2 and found it to be quite effective. PM2 allows applications to run in the background as daemon processes, ensuring that they continue to function even if the terminal or console is closed. This realization highlighted the power of PM2 in maintaining the continuous operation of my project. Additionally, I employed the command `nohup sudo npm start &`, which further ensured that my website could run smoothly after closing the console. It's a fascinating aspect of managing applications in the cloud.
+
+**问题 1：**
+我在关闭AWS控制台后发现我的代码停止了运行，无法继续自动执行。首先，我尝试了使用PM2，并发现它非常有效。PM2 可以在后台守护进程的形式下运行我的项目，即使我关闭了终端或控制台，应用程序也会继续运行。然后，通过添加命令 `nohup sudo npm start &`，我成功让我的网站继续在关闭控制台后正常运行。非常有趣。
